@@ -8,6 +8,7 @@
 
 #import "HomeTableViewController.h"
 #import <Parse/Parse.h>
+#import "CustomTwitterCell.h"
 
 @interface HomeTableViewController (){
     NSMutableArray *tweets;
@@ -22,6 +23,8 @@
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refreshTweets) forControlEvents:UIControlEventValueChanged];
     self.refreshControl=refreshControl;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"CustomTwitterCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -79,18 +82,21 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    if(!cell)
+    CustomTwitterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if(!cell){
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    }
     // Configure the cell...
-    cell.textLabel.text=[tweets objectAtIndex:indexPath.row][@"Text"];
-    PFUser *sender = [tweets objectAtIndex:indexPath.row][@"Sender"];
-    cell.detailTextLabel.text=sender.username;
+
     
     return cell;
 }
 
-
+-(void)tableView:(UITableView *)tableView willDisplayCell:(CustomTwitterCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.tweetLabel.text=[tweets objectAtIndex:indexPath.row][@"Text"];
+    PFUser *sender = [tweets objectAtIndex:indexPath.row][@"Sender"];
+    cell.userLabel.text=sender.username;
+}
 /*
 #pragma mark - Navigation
 

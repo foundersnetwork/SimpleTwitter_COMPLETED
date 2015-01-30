@@ -28,6 +28,8 @@
 		A70946A01A65990400B4DBDC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A709469F1A65990400B4DBDC /* Bolts.framework */; };
 		A70946A61A65A0C700B4DBDC /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70946A51A65A0C700B4DBDC /* HomeTableViewController.m */; };
 		A70946AE1A65A95200B4DBDC /* NewTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70946AD1A65A95200B4DBDC /* NewTweetViewController.m */; };
+		A74B2AC51A7C099300063FDE /* CustomTwitterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A74B2AC31A7C099300063FDE /* CustomTwitterCell.m */; };
+		A74B2AC61A7C099300063FDE /* CustomTwitterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A74B2AC41A7C099300063FDE /* CustomTwitterCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,9 @@
 		A70946A51A65A0C700B4DBDC /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
 		A70946AC1A65A95200B4DBDC /* NewTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTweetViewController.h; sourceTree = "<group>"; };
 		A70946AD1A65A95200B4DBDC /* NewTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTweetViewController.m; sourceTree = "<group>"; };
+		A74B2AC21A7C099300063FDE /* CustomTwitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTwitterCell.h; sourceTree = "<group>"; };
+		A74B2AC31A7C099300063FDE /* CustomTwitterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTwitterCell.m; sourceTree = "<group>"; };
+		A74B2AC41A7C099300063FDE /* CustomTwitterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTwitterCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +138,9 @@
 				A70946A41A65A0C700B4DBDC /* HomeTableViewController.h */,
 				A70946A51A65A0C700B4DBDC /* HomeTableViewController.m */,
 				A709466C1A65971600B4DBDC /* Main.storyboard */,
+				A74B2AC21A7C099300063FDE /* CustomTwitterCell.h */,
+				A74B2AC31A7C099300063FDE /* CustomTwitterCell.m */,
+				A74B2AC41A7C099300063FDE /* CustomTwitterCell.xib */,
 				A709466F1A65971600B4DBDC /* Images.xcassets */,
 				A70946711A65971600B4DBDC /* LaunchScreen.xib */,
 				A70946621A65971600B4DBDC /* Supporting Files */,
@@ -266,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74B2AC61A7C099300063FDE /* CustomTwitterCell.xib in Resources */,
 				A709466E1A65971600B4DBDC /* Main.storyboard in Resources */,
 				A70946731A65971600B4DBDC /* LaunchScreen.xib in Resources */,
 				A70946701A65971600B4DBDC /* Images.xcassets in Resources */,
@@ -290,6 +299,7 @@
 				A709466B1A65971600B4DBDC /* ViewController.m in Sources */,
 				A70946681A65971600B4DBDC /* AppDelegate.m in Sources */,
 				A70946651A65971600B4DBDC /* main.m in Sources */,
+				A74B2AC51A7C099300063FDE /* CustomTwitterCell.m in Sources */,
 				A70946AE1A65A95200B4DBDC /* NewTweetViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +499,7 @@
 				A70946841A65971700B4DBDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A70946851A65971700B4DBDC /* Build configuration list for PBXNativeTarget "SimpleTwitterTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +508,7 @@
 				A70946871A65971700B4DBDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

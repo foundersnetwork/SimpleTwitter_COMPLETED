@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>88327ABE-AD44-4871-9A07-CEC4D5D6A454</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SimpleTwitter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>28256F844F295CEEABC7D686D9BAED25B5F93299</key>
+		<string>github.com:golfguru1/SimpleTwitter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SimpleTwitter.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>28256F844F295CEEABC7D686D9BAED25B5F93299</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:golfguru1/SimpleTwitter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>28256F844F295CEEABC7D686D9BAED25B5F93299</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>28256F844F295CEEABC7D686D9BAED25B5F93299</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SimpleTwitter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
