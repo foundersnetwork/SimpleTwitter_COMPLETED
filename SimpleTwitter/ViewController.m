@@ -39,7 +39,6 @@
 - (IBAction)loginClicked:(id)sender {
     [PFUser logInWithUsernameInBackground:_usernameField.text password:_passwordField.text block:^(PFUser *user, NSError *error){
         if ( user ) {
-
             [self performSegueWithIdentifier:@"showHomeScreen" sender:self];
         }
         else {
@@ -59,6 +58,7 @@
     [super viewWillAppear:animated];
     _usernameField.text=@"";
     _passwordField.text=@"";
+    //if there is someone logged in already, go to the home screen
     if([PFUser currentUser]){
         [self performSegueWithIdentifier:@"showHomeScreen" sender:self];
     }

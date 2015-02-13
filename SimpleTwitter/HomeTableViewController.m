@@ -24,13 +24,9 @@
     [refreshControl addTarget:self action:@selector(refreshTweets) forControlEvents:UIControlEventValueChanged];
     self.refreshControl=refreshControl;
     
+    //register the tableview to use the .xib file that we made to load the tableviewcells
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomTwitterCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)refreshTweets{
     [self getTweets];
@@ -41,18 +37,23 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void)getTweets{
-    tweets=[[NSMutableArray alloc]init];
+    //get a list of all the people the current user is following
+    PFRelation *following=[[PFUser currentUser]relationForKey:@"Following"];
+    PFQuery *query=following.query;
+    NSMutableArray *peopleFollowing=[[query findObjects]mutableCopy];
+    [peopleFollowing addObject:[PFUser currentUser]];   //add yourself to the list so you can see your own tweets
+    
+    
     PFQuery *tweetQuery =[PFQuery queryWithClassName:@"Tweet"];
     [tweetQuery includeKey:@"Sender"];
     [tweetQuery orderByDescending:@"createdAt"];
+    [tweetQuery whereKey:@"Sender" containedIn:peopleFollowing];    //check to see if the sender of the tweet is someone that the current user is following
     [tweetQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(!error){
-            for(PFObject *tweet in objects){
-                [tweets addObject:tweet];
-                dispatch_async(dispatch_get_main_queue(), ^ {
-                    [self.tableView reloadData];
-                });
-            }
+            tweets=[objects mutableCopy];
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
         }
     }];
 }
@@ -87,24 +88,26 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     }
     // Configure the cell...
-
+    
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(CustomTwitterCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //populate the cells with the data of each tweet
     cell.tweetLabel.text=[tweets objectAtIndex:indexPath.row][@"Text"];
     PFUser *sender = [tweets objectAtIndex:indexPath.row][@"Sender"];
     cell.userLabel.text=sender.username;
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

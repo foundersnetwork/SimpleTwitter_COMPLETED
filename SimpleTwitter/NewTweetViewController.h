@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewTweetViewController : UIViewController
+@interface NewTweetViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @end
