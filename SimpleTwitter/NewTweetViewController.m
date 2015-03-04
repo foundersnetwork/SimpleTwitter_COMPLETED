@@ -13,12 +13,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *tweetField;
 @property (weak, nonatomic) IBOutlet UITableView *peopleTable;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@property(strong, nonatomic) NSMutableArray *people;
 @end
 
-@implementation NewTweetViewController{
-    NSMutableArray *people;
-}
+@implementation NewTweetViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,19 +34,21 @@
     PFObject *tweet = [PFObject objectWithClassName:@"Tweet"];
     tweet[@"Text"]=_tweetField.text;
     tweet[@"Sender"]=[PFUser currentUser];
+    tweet[@"NumRetweet"]=@0;
+    tweet[@"NumFavorite"]=@0;
     [tweet saveInBackground];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)getPeopleWithName:(NSString*)name{
     //search for users with the username that they entered
-    people=[[NSMutableArray alloc]init];
+    self.people=[[NSMutableArray alloc]init];
     PFQuery *query = [PFUser query];
     [query whereKey:@"username" notEqualTo:[PFUser currentUser].username];
     [query whereKey:@"username" equalTo:name];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            people=[objects mutableCopy];
+            self.people=[objects mutableCopy];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [_peopleTable reloadData];
             });
@@ -73,12 +73,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [people count];
+    return [self.people count];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     PFUser * currentUser = [PFUser currentUser];
     PFRelation *relation = [currentUser relationForKey:@"Following"];
-    [relation addObject:[people objectAtIndex:indexPath.row]];
+    [relation addObject:[self.people objectAtIndex:indexPath.row]];
     [[PFUser currentUser] saveInBackground];
 }
 
@@ -88,7 +88,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     }
     // Configure the cell...
-    cell.textLabel.text=[people objectAtIndex:indexPath.row][@"username"];
+    cell.textLabel.text=[self.people objectAtIndex:indexPath.row][@"username"];
     
     return cell;
 }

@@ -10,10 +10,8 @@
 #import <Parse/Parse.h>
 #import "CustomTwitterCell.h"
 
-@interface HomeTableViewController (){
-    NSMutableArray *tweets;
-}
-
+@interface HomeTableViewController ()
+@property (nonatomic, strong)NSMutableArray *tweets;
 @end
 
 @implementation HomeTableViewController
@@ -43,14 +41,13 @@
     NSMutableArray *peopleFollowing=[[query findObjects]mutableCopy];
     [peopleFollowing addObject:[PFUser currentUser]];   //add yourself to the list so you can see your own tweets
     
-    
     PFQuery *tweetQuery =[PFQuery queryWithClassName:@"Tweet"];
     [tweetQuery includeKey:@"Sender"];
     [tweetQuery orderByDescending:@"createdAt"];
     [tweetQuery whereKey:@"Sender" containedIn:peopleFollowing];    //check to see if the sender of the tweet is someone that the current user is following
     [tweetQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(!error){
-            tweets=[objects mutableCopy];
+            self.tweets=[objects mutableCopy];
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [self.tableView reloadData];
             });
@@ -78,27 +75,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [tweets count];
+    return [self.tweets count];
 }
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTwitterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if(!cell){
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     }
-    // Configure the cell...
-    
-    
+    cell.tweet=[self.tweets objectAtIndex:indexPath.row];
     return cell;
-}
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(CustomTwitterCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    //populate the cells with the data of each tweet
-    cell.tweetLabel.text=[tweets objectAtIndex:indexPath.row][@"Text"];
-    PFUser *sender = [tweets objectAtIndex:indexPath.row][@"Sender"];
-    cell.userLabel.text=sender.username;
 }
 /*
  #pragma mark - Navigation

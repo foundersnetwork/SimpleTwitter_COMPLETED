@@ -257,7 +257,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="XFX-LK-A8V" style="IBUITableViewCellStyleDefault" id="7DS-BU-b4v">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="XFX-LK-A8V" style="IBUITableViewCellStyleDefault" id="7DS-BU-b4v" customClass="CustomTwitterCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7DS-BU-b4v" id="VFT-wQ-OZC">
@@ -307,8 +307,7 @@
                                 <exclude reference="0uc-F8-0x9"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="P4B-DP-2Bm"/>
-                                <exclude reference="kEv-WF-zGP"/>
+                                <exclude reference="Fj4-dC-WH4"/>
                                 <exclude reference="938-S3-ssw"/>
                                 <exclude reference="Lzk-qX-ZNU"/>
                                 <exclude reference="NND-zm-IK9"/>
@@ -316,10 +315,11 @@
                                 <exclude reference="azM-Wa-ogN"/>
                                 <exclude reference="hI7-7f-asU"/>
                                 <exclude reference="nBi-TM-MQn"/>
+                                <exclude reference="P4B-DP-2Bm"/>
+                                <exclude reference="kEv-WF-zGP"/>
                                 <exclude reference="Dz9-dy-HES"/>
                                 <exclude reference="K6V-Hf-GQK"/>
                                 <exclude reference="lx6-Bq-xa5"/>
-                                <exclude reference="Fj4-dC-WH4"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -330,8 +330,7 @@
                                 <include reference="0uc-F8-0x9"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="P4B-DP-2Bm"/>
-                                <include reference="kEv-WF-zGP"/>
+                                <include reference="Fj4-dC-WH4"/>
                                 <include reference="938-S3-ssw"/>
                                 <include reference="Lzk-qX-ZNU"/>
                                 <include reference="NND-zm-IK9"/>
@@ -339,10 +338,11 @@
                                 <include reference="azM-Wa-ogN"/>
                                 <include reference="hI7-7f-asU"/>
                                 <include reference="nBi-TM-MQn"/>
+                                <include reference="P4B-DP-2Bm"/>
+                                <include reference="kEv-WF-zGP"/>
                                 <include reference="Dz9-dy-HES"/>
                                 <include reference="K6V-Hf-GQK"/>
                                 <include reference="lx6-Bq-xa5"/>
-                                <include reference="Fj4-dC-WH4"/>
                             </mask>
                         </variation>
                     </view>
@@ -357,4 +357,5 @@
             <point key="canvasLocation" x="2320.5" y="383.25"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
